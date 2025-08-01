@@ -1,72 +1,203 @@
-/* Basic Reset & Body Styles */
+/* --- CSS Variables for easy theme management --- */
+:root {
+    --sidebar-bg: #ffffff;
+    --sidebar-width: 260px;
+    --sidebar-width-collapsed: 88px;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --bg-primary: #f8f9fa;
+    --accent-color: #0d6efd;
+    --border-color: #dee2e6;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+    --transition-speed: 0.3s;
+}
+
+/* --- Basic Reset & Body Styles --- */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-    scroll-behavior: smooth; /* Makes scrolling smooth when clicking nav links */
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    scroll-behavior: smooth;
 }
 
-/* Header & Navigation */
-header {
-    background: #fff;
-    color: #333;
-    padding: 1rem 0;
+.page-container {
+    display: flex;
+}
+
+/* --- Sidebar Styles --- */
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
     position: sticky;
     top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    transition: width var(--transition-speed) ease;
 }
 
-nav {
+.sidebar-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 2rem;
+    justify-content: space-between;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    min-height: 65px;
+    box-sizing: border-box;
 }
 
-nav .logo {
+.sidebar-logo {
     font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    text-decoration: none;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
+    font-weight: 600;
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.sidebar-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+    background-color: var(--bg-primary);
+}
+
+.sidebar-toggle svg {
+    transition: transform var(--transition-speed) ease;
+}
+
+/* --- Sidebar Navigation --- */
+.sidebar-nav {
+    flex-grow: 1;
+    padding: 1rem 0;
+}
+
+.sidebar-nav ul {
+    list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
-    color: #555;
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1.5rem;
+    margin: 0.25rem 1rem;
     text-decoration: none;
-    transition: color 0.3s ease;
+    color: var(--text-secondary);
     font-weight: 500;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-nav ul li a:hover {
-    color: #007bff;
+.sidebar-nav a:hover {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
 }
 
-/* Main Content & Sections */
+.sidebar-nav a.active {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.sidebar-nav .icon {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    min-width: 24px; /* To align text when collapsed */
+    transition: margin-right var(--transition-speed) ease;
+}
+
+.sidebar-nav .link-text {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+/* --- Collapsed State --- */
+.sidebar.collapsed {
+    width: var(--sidebar-width-collapsed);
+}
+
+.sidebar.collapsed .sidebar-logo {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar.collapsed .sidebar-toggle svg {
+    transform: rotate(180deg);
+}
+
+.sidebar.collapsed .sidebar-nav a {
+    justify-content: center;
+    padding: 0.85rem 1rem;
+}
+
+.sidebar.collapsed .sidebar-nav .icon {
+    margin-right: 0;
+}
+
+.sidebar.collapsed .sidebar-nav .link-text {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+/* --- Top Navigation Bar --- */
+.top-nav {
+    background-color: var(--sidebar-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 2rem;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: sticky;
+    top: 0;
+    z-index: 900; /* Lower than sidebar on mobile */
+}
+
+.top-nav nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 1.5rem;
+    transition: color 0.2s ease;
+}
+
+.top-nav nav a:hover {
+    color: var(--accent-color);
+}
+
+/* --- Main Content --- */
+.main-content {
+    flex-grow: 1;
+    width: 100%;
+    padding: 2rem;
+}
+
+/* On screens with a top-nav, we remove the padding from main-content */
 main {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 2rem;
 }
 
 section {
     padding: 3rem 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color);
 }
 
 section:last-of-type {
@@ -78,14 +209,110 @@ section:last-of-type {
     padding: 4rem 0;
 }
 
-h1, h2 {
-    text-align: center;
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
 }
 
-/* Footer */
+/* Use h1 for page titles in main content */
+.main-content h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    text-align: left;
+    font-size: 2rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Footer --- */
 footer {
     text-align: center;
     padding: 2rem;
-    background: #333;
+    margin-top: 2rem;
+    background: #fff;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+/* --- Special "Love Box" in Contact Section --- */
+.love-box {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
     color: #fff;
+    /* A romantic, vibrant gradient */
+    background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+    padding: 3rem 1rem;
+    border-radius: 16px;
+    /* A glowing shadow that matches the gradient */
+    box-shadow: 0 8px 30px rgba(255, 117, 140, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem; /* Space below the h2 */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.heart-icon {
+    width: 40px;
+    height: 40px;
+    color: #fff; /* White heart to stand out on the gradient */
+    animation: pulse 1.5s infinite;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.25);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* --- Responsive for smaller screens --- */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        z-index: 1000;
+        left: calc(-1 * var(--sidebar-width));
+        transition: transform var(--transition-speed) ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(var(--sidebar-width));
+        box-shadow: 0 0 25px var(--shadow-color);
+    }
+
+    .sidebar.collapsed {
+        transform: translateX(0);
+        left: 0;
+    }
+
+    .main-content {
+        padding: 0;
+    }
+
+    .main-content main {
+        padding: 1rem;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+
+    .love-box {
+        font-size: 1.8rem;
+    }
+    .heart-icon {
+        width: 30px;
+        height: 30px;
+    }
 }
