@@ -1,35 +1,49 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.querySelector('.sidebar');
     const sidebarToggle = document.getElementById('sidebarToggle');
 
-    // Function to handle sidebar toggle
-    const toggleSidebar = () => {
-        const isCollapsed = sidebar.classList.toggle('collapsed');
-        localStorage.setItem('sidebar-collapsed', isCollapsed);
+    // Function to set the active navigation link
+    const setActiveLink = () => {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+        navLinks.forEach(link => {
+            link.classList.remove('active'); // Reset all links first
+            const linkPath = link.getAttribute('href');
+
+            // Handle root path ('/')
+            if (currentPath.endsWith('/') && linkPath === '/') {
+                link.classList.add('active');
+            }
+            // Handle other paths, ensuring it's not just the root
+            else if (linkPath !== '/' && currentPath.endsWith(linkPath)) {
+                link.classList.add('active');
+            }
+        });
     };
 
-    // Check for saved state in localStorage
-    if (localStorage.getItem('sidebar-collapsed') === 'true') {
-        sidebar.classList.add('collapsed');
+    if (sidebar && sidebarToggle) {
+        sidebarToggle.addEventListener('click', () => {
+            // Use innerWidth to check viewport size, matching CSS @media query
+            if (window.innerWidth <= 768) {
+                // On mobile, toggle the '.open' class for the overlay menu
+                sidebar.classList.toggle('open');
+            } else {
+                // On desktop, toggle the '.collapsed' class for the compact sidebar
+                sidebar.classList.toggle('collapsed');
+            }
+        });
+
+        // Add a listener to handle window resizing to prevent inconsistent states
+        window.addEventListener('resize', () => {
+            sidebar.classList.remove('open'); // Always remove mobile class on resize
+            // On mobile, the collapsed class should not be active
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('collapsed');
+            }
+        });
     }
 
-    // Event listener for the toggle button
-    if (sidebarToggle) {
-        sidebarToggle.addEventListener('click', toggleSidebar);
-    }
-
-    // --- Set active link in sidebar based on current page ---
-    const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
-    const currentPath = window.location.pathname;
-
-    sidebarLinks.forEach(link => {
-        const linkPath = link.getAttribute('href');
-
-        // Handle the root path case where '/' should match '/index.html' or just '/'
-        if (linkPath === currentPath || (linkPath === '/' && currentPath.endsWith('/index.html'))) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
+    // Set the active link on page load
+    setActiveLink();
 });
