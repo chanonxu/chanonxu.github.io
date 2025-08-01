@@ -36,10 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Add a listener to handle window resizing to prevent inconsistent states
         window.addEventListener('resize', () => {
-            sidebar.classList.remove('open'); // Always remove mobile class on resize
-            // On mobile, the collapsed class should not be active
-            if (window.innerWidth <= 768) {
-                sidebar.classList.remove('collapsed');
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('open');
             }
         });
     }
