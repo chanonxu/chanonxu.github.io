@@ -111,7 +111,7 @@ export const BentoGridItem = ({
         )}
 
         {id === 2 && (
-          <RobotCatCanvas className="pointer-events-none absolute inset-0 z-0" />
+          <RobotCatCanvas className="pointer-events-none absolute md:-bottom-6 lg:-bottom-10 2xl:-bottom-20 right-[-12%] h-[18rem] w-[18rem] z-0" />
         )}
 
         {/* Overlay the description so the flex column layout doesn’t push the title downward. */}
