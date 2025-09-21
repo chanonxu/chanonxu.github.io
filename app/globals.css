@@ -6,6 +6,20 @@
   --color-black-200: rgba(17, 25, 40, 0.75);
   --color-black-300: rgba(255, 255, 255, 0.125);
 
+  /* Added color */
+  --color-vewishdarkblue: #212a3e;
+  --color-vewishblue: #27374d;
+  --color-vewishblue-100: #526d82;
+  --color-vewishblue-200: #9db2bf;
+  --color-vewishblue-300: #dde6ed;
+
+  --color-vewishgreen: #99a799;
+  --color-vewishgreen-100: #adc2a9;
+  --color-vewishgreen-200: #d3e4cd;
+  --color-vewishbeige: #fef5ed;
+
+  --color-vewishpink: #ffb4b4;
+
   --color-white: #fff;
   --color-white-100: #bec1dd;
   --color-white-200: #c1c2d3;
@@ -48,6 +62,10 @@
   --animate-fifth: moveInCircle 20s ease infinite;
   --animate-scroll: scroll var(--animation-duration, 40s)
     var(--animation-direction, forwards) linear infinite;
+
+  --animate-vertical-scroll: vertical-scroll
+    var(--vertical-animation-duration, 24s)
+    var(--vertical-animation-direction, forwards) linear infinite;
 }
 
 @keyframes accordion-down {
@@ -123,6 +141,12 @@
   }
 }
 
+@keyframes vertical-scroll {
+  to {
+    transform: translateY(-50%);
+  }
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
@@ -188,7 +212,7 @@
 }
 
 * {
-  @apply border-border !scroll-smooth;
+  @apply !scroll-smooth;
 }
 
 body {

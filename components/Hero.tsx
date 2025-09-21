@@ -3,7 +3,6 @@ import React from "react";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/text-generate-effect";
 import MagicButton from "./ui/magic-button";
-import { FaLocationArrow } from "react-icons/fa";
 import { BsSearchHeartFill } from "react-icons/bs";
 
 const Hero = () => {
@@ -16,13 +15,16 @@ const Hero = () => {
         />
         <Spotlight
           className="top-10 left-full h-[80vh] w-[50vw]"
-          fill="purple"
+          fill="var(--color-vewishgreen-100)"
         />
-        <Spotlight className="top-28 -left-80 h-[80vh] w-[50vw]" fill="blue" />
+        <Spotlight
+          className="top-28 -left-80 h-[80vh] w-[50vw]"
+          fill="var(--color-vewishpink)"
+        />
       </div>
 
       <div
-        className="flex h-screen w-full items-center justify-center bg-white dark:bg-black-100
+        className="flex h-screen w-full items-center justify-center bg-white dark:bg-vewishblue
         absolute top-0 left-0"
       >
         <div
@@ -30,11 +32,11 @@ const Hero = () => {
             "absolute inset-0",
             "[background-size:40px_40px]",
             "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
-            "dark:[background-image:linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)]"
+            "dark:[background-image:linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)]"
           )}
         />
         {/* Radial gradient for the container to give a faded look */}
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black-100" />
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-vewishblue" />
       </div>
 
       <div className="flex justify-center relative my-20 z-10">
@@ -48,7 +50,7 @@ const Hero = () => {
 
           <TextGenerateEffect
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
-            words="Transforming Concepts into Seamless Experiences"
+            words="Welcome to Vewish Labs"
           />
 
           <p
