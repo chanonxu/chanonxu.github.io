@@ -82,77 +82,77 @@ export const BentoGridItem = ({
             />
           )}
         </div>
-        <div
-          className={`absolute right-0 -bottom-5 ${
-            id === 5 && "w-full opacity-80"
-          }`}
-        >
-          {spareImg && (
-            <img
-              src={spareImg}
-              alt={spareImg}
-              className={"object-cover, object-center w-full h-full"}
-            />
-          )}
+      </div>
+      <div
+        className={`absolute right-0 -bottom-5 ${
+          id === 5 && "w-full opacity-80"
+        }`}
+      >
+        {spareImg && (
+          <img
+            src={spareImg}
+            alt={spareImg}
+            className={"object-cover, object-center w-full h-full"}
+          />
+        )}
+      </div>
+
+      {id === 2 && (
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-end pr-0 pt-6">
+          <div className="h-[240px] w-[240px] max-w-full">
+            <Scene />
+          </div>
+        </div>
+      )}
+
+      {/* Overlay the description so the flex column layout doesn’t push the title downward. */}
+      <div
+        className={cn(
+          titleClassName,
+          "pointer-events-none absolute inset-0 flex flex-col justify-end gap-2 px-5"
+        )}
+      >
+        <div className="font-sans font-extralight text-[#c1c2d3] text-sm md:text-xs lg:text-base z-10">
+          {description}
+        </div>
+        <div className="mt-2 mb-2 font-sans font-bold text-neutral-600 dark:text-neutral-200 lg:text-xl max-w-96 z-10">
+          {title}
         </div>
 
-        {id === 2 && (
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-end pr-0 pt-6">
-            <div className="h-[240px] w-[240px] max-w-full">
-              <Scene />
-            </div>
-          </div>
+        {id === 5 && (
+          <InfiniteVerticalCards
+            items={techMarqueeItems}
+            speed="normal"
+            pauseOnHover
+            className="pointer-events-none absolute -right-4 top-1/2 hidden h-40 w-50 -translate-y-1/2 lg:block"
+            itemClassName="text-[0.65rem] lg:text-sm font-extralight"
+          />
         )}
 
-        {/* Overlay the description so the flex column layout doesn’t push the title downward. */}
-        <div
-          className={cn(
-            titleClassName,
-            "pointer-events-none absolute inset-0 flex flex-col justify-end gap-2 px-5"
-          )}
-        >
-          <div className="font-sans font-extralight text-[#c1c2d3] text-sm md:text-xs lg:text-base z-10">
-            {description}
-          </div>
-          <div className="mt-2 mb-2 font-sans font-bold text-neutral-600 dark:text-neutral-200 lg:text-xl max-w-96 z-10">
-            {title}
-          </div>
-
-          {id === 5 && (
-            <InfiniteVerticalCards
-              items={techMarqueeItems}
-              speed="normal"
-              pauseOnHover
-              className="pointer-events-none absolute -right-4 top-1/2 hidden h-40 w-50 -translate-y-1/2 lg:block"
-              itemClassName="text-[0.65rem] lg:text-sm font-extralight"
-            />
-          )}
-
-          {id === 6 && (
-            <div className="relative pointer-events-auto pb-5">
-              <div className={`absolute -bottom-5 right-0`}>
-                <Lottie
-                  options={{
-                    loop: copied,
-                    autoplay: copied,
-                    animationData,
-                    rendererSettings: {
-                      preserveAspectRatio: "xMidYMid slice",
-                    },
-                  }}
-                />
-              </div>
-              <MagicButton
-                title={copied ? "Email Copied" : "Copy Email"}
-                icon={<IoCopyOutline />}
-                position="left"
-                otherClasses="!bg-[#161a31]"
-                textClassName="!px-4 !py-2 text-[0.55rem] lg:text-[0.6rem] tracking-[0.15em]"
-                handleClick={handleCopy}
+        {id === 6 && (
+          <div className="relative pointer-events-auto pb-5">
+            <div className={`absolute -bottom-5 right-0`}>
+              <Lottie
+                options={{
+                  loop: copied,
+                  autoplay: copied,
+                  animationData,
+                  rendererSettings: {
+                    preserveAspectRatio: "xMidYMid slice",
+                  },
+                }}
               />
             </div>
-          )}
-        </div>
+            <MagicButton
+              title={copied ? "Email Copied" : "Copy Email"}
+              icon={<IoCopyOutline />}
+              position="left"
+              otherClasses="!bg-[#161a31]"
+              textClassName="!px-4 !py-2 text-[0.55rem] lg:text-[0.6rem] tracking-[0.15em]"
+              handleClick={handleCopy}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

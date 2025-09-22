@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import { useProgress, Html } from "@react-three/drei";
 
 function Loader() {
-  const { progress, active } = useProgress();
+  const { progress } = useProgress();
 
   return <Html center>{progress.toFixed(1)} % loaded</Html>;
 }

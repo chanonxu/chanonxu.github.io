@@ -1,6 +1,7 @@
 import { FaLocationArrow } from "react-icons/fa6";
+import Image from "next/image";
 
-import { navItems, socialMedia } from "@/data";
+import { socialMedia } from "@/data";
 import MagicButton from "./ui/magic-button";
 
 const Footer = () => {
@@ -11,6 +12,15 @@ const Footer = () => {
       id="contact"
       className="relative w-full overflow-hidden bg-[color:var(--color-vewishblackblue)]"
     >
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <Image
+          src="/footer-grid.svg"
+          alt="grid backdrop"
+          fill
+          priority
+          className="object-cover opacity-30"
+        />
+      </div>
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-16 px-6 py-20 sm:px-10">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
@@ -22,7 +32,7 @@ const Footer = () => {
             </h2>
             <p className="max-w-2xl text-sm text-white/70 md:text-base">
               I work on lightweight dashboards, automations, small project
-              development. Share a brief and I'll reply with scope and a simple
+              development. Share a brief and I&apos;ll reply with scope and a simple
               plan.
             </p>
             <a href="mailto:chanon.tag@gmail.com" className="inline-flex">
@@ -64,7 +74,7 @@ const Footer = () => {
                     className="group flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 backdrop-blur-md transition-all hover:border-white/40 hover:bg-white/10"
                     aria-label={label}
                   >
-                    <img
+                    <Image
                       src={img}
                       alt={label}
                       width={20}

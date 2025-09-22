@@ -6,10 +6,8 @@ useGLTF.preload("/models/robot_playground.glb");
 
 export default function Model() {
   const group = useRef<Group>(null);
-  const { nodes, materials, animations, scene } = useGLTF(
-    "/models/robot_playground.glb"
-  );
-  const { actions, clips } = useAnimations(animations, scene);
+  const { animations, scene } = useGLTF("/models/robot_playground.glb");
+  const { actions } = useAnimations(animations, scene);
 
   useEffect(() => {
     const action = actions["Experiment"];
