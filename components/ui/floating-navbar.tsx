@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import {
   motion,
   AnimatePresence,
@@ -55,7 +56,7 @@ export const FloatingNav = ({
           duration: 0.2,
         }}
         className={cn(
-          "flex max-w-fit  fixed top-10 inset-x-0 mx-auto border border-transparent dark:border-white/[0.2] rounded-full dark:bg-black bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] pr-2 pl-8 py-2  items-center justify-center space-x-4",
+          "flex max-w-fit  fixed top-10 inset-x-0 mx-auto rounded-full shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] px-6 py-3  items-center justify-center space-x-4 border border-white/[0.2] bg-vewishblackblue",
           className
         )}
       >
@@ -71,10 +72,13 @@ export const FloatingNav = ({
             <span className="hidden sm:block text-sm">{navItem.name}</span>
           </a>
         ))}
-        <button className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full">
+        <Link
+          href="/under-development"
+          className="relative rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-black transition-colors hover:border-blue-400 hover:text-blue-100 dark:border-white/[0.2] dark:text-white"
+        >
           <span>Login</span>
-          <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
-        </button>
+          <span className="absolute inset-x-0 mx-auto w-1/2 -bottom-px h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
+        </Link>
       </motion.div>
     </AnimatePresence>
   );

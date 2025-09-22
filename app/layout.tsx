@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Chanon's Portfolio",
-  description: "My Profile",
+  title: "Vewish Labs",
+  description: "Vewish Labs",
 };
 
 export default function RootLayout({

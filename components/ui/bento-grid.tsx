@@ -1,14 +1,13 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { BackgroundGradientAnimation } from "./background-gradient-animation";
 import { InfiniteVerticalCards } from "./infinite-vertical-cards";
-import RobotCatCanvas from "./robot-cat";
 import Lottie from "react-lottie";
 import { useState } from "react";
 import animationData from "@/data/confetti.json";
 import MagicButton from "./magic-button";
 import { IoCopyOutline } from "react-icons/io5";
+import Scene from "./robot-scene";
 
 export const BentoGrid = ({
   className,
@@ -28,15 +27,7 @@ export const BentoGrid = ({
     </div>
   );
 };
-const techMarqueeItems = [
-  "Power BI",
-  "Power Automate",
-  "Python",
-  "SQL",
-  "Tableau",
-  "Looker Studio",
-  "Snowflake",
-];
+const techMarqueeItems = ["Power BI", "Power Automate", "Python", "SQL"];
 export const BentoGridItem = ({
   className,
   title,
@@ -76,7 +67,7 @@ export const BentoGridItem = ({
         className
       )}
       style={{
-        background: "#212A3E",
+        background: "#011120",
         backgroundColor:
           "linear-gradient(90deg,rgba(33, 42, 62, 1) 0%, rgba(82, 109, 130, 1) 50%, rgba(221, 230, 237, 1) 100%)",
       }}
@@ -104,21 +95,20 @@ export const BentoGridItem = ({
             />
           )}
         </div>
-        {id === 6 && (
-          <BackgroundGradientAnimation>
-            <div className="absolute z-50 flex items-center justify-center text-white font-bold" />
-          </BackgroundGradientAnimation>
-        )}
 
         {id === 2 && (
-          <RobotCatCanvas className="pointer-events-none absolute md:-bottom-6 lg:-bottom-10 2xl:-bottom-20 right-[-12%] h-[18rem] w-[18rem] z-0" />
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-end pr-0 pt-6">
+            <div className="h-[240px] w-[240px] max-w-full">
+              <Scene />
+            </div>
+          </div>
         )}
 
         {/* Overlay the description so the flex column layout doesn’t push the title downward. */}
         <div
           className={cn(
             titleClassName,
-            "pointer-events-none absolute inset-0 flex flex-col justify-end px-5 py-5 lg:py-10"
+            "pointer-events-none absolute inset-0 flex flex-col justify-end gap-2 px-5"
           )}
         >
           <div className="font-sans font-extralight text-[#c1c2d3] text-sm md:text-xs lg:text-base z-10">
@@ -139,7 +129,7 @@ export const BentoGridItem = ({
           )}
 
           {id === 6 && (
-            <div className="mt-2 relative pointer-events-auto">
+            <div className="relative pointer-events-auto pb-5">
               <div className={`absolute -bottom-5 right-0`}>
                 <Lottie
                   options={{
@@ -157,7 +147,7 @@ export const BentoGridItem = ({
                 icon={<IoCopyOutline />}
                 position="left"
                 otherClasses="!bg-[#161a31]"
-                textClassName="normal-case !px-5 !py-3 text-[0.65rem] lg:text-xs tracking-[0.18em]"
+                textClassName="!px-4 !py-2 text-[0.55rem] lg:text-[0.6rem] tracking-[0.15em]"
                 handleClick={handleCopy}
               />
             </div>

@@ -39,7 +39,7 @@ export const TextGenerateEffect = ({
               key={word + idx}
               className={`${
                 // Split words into array and find index > 3 to color it purple
-                idx > 3 ? "text-purple" : "dark:text-white text-black"
+                idx > 2 ? "text-[#e7ffe7]" : "dark:text-white text-black"
               } opacity-0`}
               style={{
                 filter: filter ? "blur(10px)" : "none",
