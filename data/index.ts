@@ -9,9 +9,9 @@ export const gridItems = [
     title: "",
     description: "",
     className: "md:col-span-7 md:row-span-3",
-    imgClassName: "w-full h-full",
+    imgClassName: "w-full h-full opacity-50",
     titleClassName: "justify-end",
-    img: "/b1.svg",
+    img: "/me.jpg",
     spareImg: "",
   },
   {
@@ -26,12 +26,12 @@ export const gridItems = [
   },
   {
     id: 3,
-    title: "In the lab: Early-stage experimenting",
+    title: "In the lab: early-stage experimenting",
     description: "",
     className: "md:col-span-5 md:row-span-2",
-    imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
+    imgClassName: "absolute right-0 bottom-0 md:w-96 w-60 opacity-50",
     titleClassName: "justify-end mb-4 md:mb-6",
-    img: "/b5.svg",
+    img: "/programming.jpg",
     spareImg: "/grid.svg",
   },
   {

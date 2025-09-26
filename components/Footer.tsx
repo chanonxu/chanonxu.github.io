@@ -32,10 +32,15 @@ const Footer = () => {
             </h2>
             <p className="max-w-2xl text-sm text-white/70 md:text-base">
               I work on lightweight dashboards, automations, small project
-              development. Share a brief and I&apos;ll reply with scope and a simple
-              plan.
+              development. Share a brief and I&apos;ll reply with scope and a
+              simple plan.
             </p>
-            <a href="mailto:chanon.tag@gmail.com" className="inline-flex">
+            <a
+              href="https://calendar.app.google/fTTF1NfhqoL2hogw9"
+              className="inline-flex"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <MagicButton
                 title="Book time with me"
                 icon={<FaLocationArrow />}
@@ -51,10 +56,10 @@ const Footer = () => {
               </h3>
               <div className="space-y-3 text-sm sm:text-right">
                 <a
-                  href="mailto:chanon.tag@gmail.com"
+                  href="mailto:contact@vewishlabs.com"
                   className="block font-medium text-white transition-colors hover:text-white"
                 >
-                  chanon.tag@gmail.com
+                  contact@vewishlabs.com
                 </a>
                 <p className="text-white/60">
                   Bangkok · Open to remote work

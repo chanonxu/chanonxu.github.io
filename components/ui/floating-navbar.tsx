@@ -76,7 +76,7 @@ export const FloatingNav = ({
           href="/under-development"
           className="relative rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-black transition-colors hover:border-blue-400 hover:text-blue-100 dark:border-white/[0.2] dark:text-white"
         >
-          <span>Login</span>
+          <span>Projects</span>
           <span className="absolute inset-x-0 mx-auto w-1/2 -bottom-px h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
         </Link>
       </motion.div>
