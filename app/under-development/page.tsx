@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import styles from "./page.module.css";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Under Development | Vewish Labs",
@@ -23,9 +24,9 @@ const UnderDevelopmentPage = () => {
                     The page you are looking for is not available.
                   </p>
 
-                  <a href="/" className={styles.link}>
+                  <Link href="/" className={styles.link}>
                     Go to Home
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
