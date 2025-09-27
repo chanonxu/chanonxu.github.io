@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import { navItems } from "@/data";
 
-const MyPortfolioPage = () => {
+const HomePage = () => {
   return (
     <main className="relative flex flex-col items-center bg-vewishblackblue">
       <div className="w-full px-5 sm:px-10">
@@ -26,4 +26,4 @@ const MyPortfolioPage = () => {
   );
 };
 
-export default MyPortfolioPage;
+export default HomePage;
